@@ -23,3 +23,27 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 - Add `REACT_APP_{name-of-key}={key-value}` to .env file (no quotes!)
 - Use: `process.env.REACT_APP_{name-of-key}`
 
+## React Bootstrap
+
+This application is styled using react bootstrap.
+
+[Documentation for React Bootstrap can be found here.](https://react-bootstrap.github.io/components/alerts/)
+
+### Example
+
+Load the component with this:
+`import { Button } from 'react-bootstrap';`
+
+Use the component like this:
+`<Button bsStyle="primary" bsSize="large">Primary</Button>`
+
+## Reference for fetching data in React
+
+See this site for fetching data:
+https://www.robinwieruch.de/react-fetching-data/
+
+## Unsplash API
+
+Search for photos by using [this](https://api.unsplash.com/photos/?client_id={REACT_APP_UNSPLASH_ACCESS_KEY}).
+
+
