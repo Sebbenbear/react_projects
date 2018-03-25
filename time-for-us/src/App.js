@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { BackgroundImage } from './components/BackgroundImage';
+import { TimeZoneText } from './components/TimeZoneText';
+
 class App extends Component {
   render() {
     return (
@@ -13,7 +15,9 @@ class App extends Component {
           This app allows one person to see what the current time is for a person in another location.
         </p>
         <BackgroundImage keyword="sydney"/>
+        <TimeZoneText timezone="Australia/Sydney" />
         <BackgroundImage keyword="new york"/>
+        <TimeZoneText timezone="America/New_York" />
       </div>
     );
   }
