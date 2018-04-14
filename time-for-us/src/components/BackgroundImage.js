@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Image from 'react-bootstrap/lib/Image';
 
 export class BackgroundImage extends Component {
 
@@ -50,7 +51,7 @@ export class BackgroundImage extends Component {
             return (
             <div>
                 <p>{error.message}</p>;
-                <img src={image} alt="background" />
+                <Image src={image} alt="background" rounded/>
             </div>)
         }
       
@@ -59,7 +60,7 @@ export class BackgroundImage extends Component {
         }
 
         return (
-            <img src={image} alt="background" />
+            <Image src={image} alt="background" rounded/>
         );
     };
 }
