@@ -3,24 +3,15 @@ import moment from 'moment-timezone';
 
 export class TimeZoneText extends Component {
 
-    constructor(props) {
-        super(props);
-    
-        this.state = {
-            isLoading: false,
-            error: null,
-        };
-    }
-
     render() {
-        var timezone = this.props.timezone;
-        var momentTimezone = moment.tz(moment().format(), timezone);
+        const timeZone = this.props.timeZone;
+        const momentTimeZone = moment.tz(moment().format(), timeZone);
 
         return (
             <div>
-                <p>{timezone}</p>
-                <p>{momentTimezone.format('h:mm:ss a')}</p>
-                <p>{momentTimezone.format('MMMM Do YYYY')}</p>
+                <p>{timeZone}</p>
+                <p>{momentTimeZone.format('h:mm:ss a')}</p>
+                <p>{momentTimeZone.format('MMMM Do YYYY')}</p>
             </div>
         );
     }
