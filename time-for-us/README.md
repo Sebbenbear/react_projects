@@ -1,3 +1,12 @@
+# Time For Us
+
+This is a small app to explore react more.
+
+Google Timezone API exploration:
+https://gist.github.com/Sebbenbear/92759b38683d26c978e8a68e5b6c2ec8
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
