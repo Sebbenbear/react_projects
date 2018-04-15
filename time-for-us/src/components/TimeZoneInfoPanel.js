@@ -12,27 +12,36 @@ export class TimeZoneInfoPanel extends Component {
     constructor(props) {
         super(props);
 
-        const myCity = this.extractCity(this.props.timeZone)
+        const myKeyword = this.extractKeyword(this.props.timeZone)
     
         this.state = {
             isLoading: false,
             error: null,
-            city: myCity,
+            keyword: myKeyword,
             timeZoneList: moment.tz.names(),
             timeZone: this.props.timeZone
         };
         this.handleChange = this.handleChange.bind(this);
     }
 
-    extractCity(timezone) {
-        return timezone.split("/")[1].replace("_", " ").toLowerCase();
+    extractKeyword(timezone) {
+        const splitTZ = timezone.split("/");
+        let keyword;
+
+        if (splitTZ.length > 1) {
+            keyword = splitTZ[1];
+        } else {
+            keyword = splitTZ[0]
+        }
+
+        return keyword.replace("_", " ").toLowerCase();
     };
 
     handleChange(event) {
         if (this.state.timeZoneList.includes(event)) {
             this.setState({
                 timeZone: event,
-                city: this.extractCity(event)
+                keyword: this.extractKeyword(event)
             });
         }
     }
@@ -48,7 +57,7 @@ export class TimeZoneInfoPanel extends Component {
                         onChange={this.handleChange}
                         />
                 </FormGroup>
-                <BackgroundImage keyword={this.state.city}/>
+                <BackgroundImage keyword={this.state.keyword}/>
                 <TimeZoneText timeZone={this.state.timeZone} />
             </div>
         );
