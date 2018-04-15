@@ -9,9 +9,19 @@ export class BackgroundImage extends Component {
         this.state = {
             isLoading: true,
             error: null,
-            image: ""
+            image: "",
+            keyword: this.props.keyword
         };
     };
+
+    componentDidUpdate() {
+        if (this.state.keyword !== this.props.keyword) {
+            this.setState({
+                keyword: this.props.keyword
+            });
+            this.getImage();
+        }
+    }
 
     componentDidMount() {
         this.getImage();
@@ -21,6 +31,7 @@ export class BackgroundImage extends Component {
     getImage() {
         const sendRequest = true;
         const query = this.props.keyword.replace(" ", "+");
+
         const key = process.env.REACT_APP_UNSPLASH_ACCESS_KEY;
         const url = "https://api.unsplash.com/search/photos?page=1&query=" + query + "&client_id=" + key;
 
@@ -33,15 +44,23 @@ export class BackgroundImage extends Component {
                     throw new Error("Couldn't load the image.");
             }})
             .then(data => {
-                const randomIndex = Math.floor(Math.random() * 10);
-                this.setState({
-                    image: data.results[randomIndex].urls.small,
-                    isLoading: false
-                });
+                if (!data.total) {
+                    this.setState({
+                        image: 'media/unknownLocation.jpg',
+                        isLoading: false
+                    });
+                } else {
+                    const numImages = data.results.length;
+                    const randomIndex = Math.floor(Math.random() * numImages);
+                    this.setState({
+                        image: data.results[randomIndex].urls.small,
+                        isLoading: false
+                    });
+                }                
             });
         } else {
             this.setState({
-                image: "https://www.newyorksightseeing.com/media/wysiwyg/GLNY/nyss_newyorkcity_roptimized.jpg.jpg",
+                image: 'media/unknownLocation.jpg',
                 isLoading: false
             });
         }
